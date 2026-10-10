@@ -1,0 +1,169 @@
+<hta:application id="oApp"
+    applicationname="myApp"
+    border="none"
+    caption="no"
+    innerborder="no"
+    scroll="no"
+    showintaskbar="yes"
+    windowstate="maximize" />
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta charset="UTF-8">
+    <title>GUGUGAGA</title>
+
+    <style>
+        html, body {
+            background-color: #0C0A09;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: none !important;
+        }
+        
+        .main-content {
+            position: absolute;
+            top: 35%;
+            width: 100%;
+        }
+        .sub-content {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+        }
+
+        .dot-spinner {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 30px auto;
+        }
+
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 4px !important;
+        }
+
+        .d1 { top: 0; left: 31px; }
+        .d2 { top: 9px; right: 9px; }
+        .d3 { top: 31px; right: 0; }
+        .d4 { bottom: 9px; right: 9px; }
+        .d5 { bottom: 0; left: 31px; }
+        .d6 { bottom: 9px; left: 9px; }
+        .d7 { top: 31px; left: 0; }
+        .d8 { top: 9px; left: 9px; }
+    </style>
+</head>
+<body onload="Init_App()">
+
+    <center class="sub-content" id="first-page" style="display: block;">
+        <div style="color: #ffffff; font-size: 35px; padding: 20px;">
+            Shutting down
+        </div>
+    </center>
+
+    <center class="main-content" id="loading-page" style="display: none;">
+        <div class="dot-spinner" id="spinner">
+            <div class="dot d1"></div>
+            <div class="dot d2"></div>
+            <div class="dot d3"></div>
+            <div class="dot d4"></div>
+            <div class="dot d5"></div>
+            <div class="dot d6"></div>
+            <div class="dot d7"></div>
+            <div class="dot d8"></div>
+        </div>
+        
+        <div id="dynamic-text" style="color: #ffffff; font-size: 35px;">
+            Updating
+        </div>
+    </center>
+
+    <script language="javascript">
+        var angle = 0;
+        var currentIndex = 0;
+        var textTimer = null;
+        
+        var sentences = [
+        	'Updating are underway.<br> Please keep your computer on.',
+        	'Working on updates 0%<br>Please keep your computer on',
+        	'Working on updates 1%<br>Please keep your computer on',
+		'Working on updates 3%<br>Please keep your computer on',
+		'Working on updates 6%<br>Please keep your computer on',
+		'Working on updates 7%<br>Please keep your computer on',
+		'Working on updates 10%<br>Please keep your computer on',
+		'Working on updates 15%<br>Please keep your computer on',
+		'Working on updates 17%<br>Please keep your computer on',
+		'Working on updates 19%<br>Please keep your computer on',
+		'Working on updates 20%<br>Please keep your computer on',
+		'Working on updates 21%<br>Please keep your computer on',
+		'Working on updates 23%<br>Please keep your computer on',
+		'Working on updates 34%<br>Please keep your computer on',
+		'Working on updates 41%<br>Please keep your computer on',
+		'Working on updates 55%<br>Please keep your computer on',
+		'Working on updates 67%<br>Please keep your computer on',
+		'Working on updates 70%<br>Please keep your computer on',
+		'Working on updates 78%<br>Please keep your computer on',
+		'Working on updates 82%<br>Please keep your computer on',
+		'Working on updates 89%<br>Please keep your computer on',
+		'Working on updates 94%<br>Please keep your computer on',
+		'Working on updates 97%<br>Please keep your computer on',
+		'Working on updates 98%<br>Please keep your computer on',
+		'Working on updates 99%<br>Please keep your computer on <br> It is nearly done',
+		'Working on updates 99%<br>Please keep your computer on <br> It is nearly done',
+		'Working on updates 99%<br>Please keep your computer on <br> It is nearly done',
+		'Working on updates 99%<br>Please keep your computer on <br> It is nearly done',
+		'Wrkig on updtes 99%<br>Plese kep yor comter n',
+		'Worin o uda 9%<br>Pe kep our compuer on',
+		'Working on updates 0%<br>Please don\'t keep your computer on',
+		'Hey,bro',
+		'Are you actuelly waiting?',
+		'Come on,<br>you want to escape?',
+		'Just click \'Alt+F4\' to escape. ' 
+        ];
+
+        function Init_App() {
+            setTimeout(function() {
+                document.getElementById("first-page").style.display = "none";
+                document.getElementById("loading-page").style.display = "block";
+                Start_Spinning();
+                Start_Text_Sequence();
+            }, 3000);
+        }
+
+        function Start_Spinning() {
+            setInterval(function() {
+                angle = (angle + 6) % 360;
+                var el = document.getElementById("spinner");
+                if (el) {
+                    el.style.transform = "rotate(" + angle + "deg)";
+                    el.style.msTransform = "rotate(" + angle + "deg)";
+                }
+            }, 30);
+        }
+
+        function Start_Text_Sequence() {
+            textTimer = setInterval(function() {
+                var textEl = document.getElementById("dynamic-text");
+                if (textEl) {
+                    textEl.innerHTML = sentences[currentIndex];
+                    currentIndex++;
+                    if (currentIndex >= sentences.length) {
+                        clearInterval(textTimer);
+                    }
+                }
+            }, 3000); 
+        }
+    </script>
+
+</body>
+</html>
+
+
