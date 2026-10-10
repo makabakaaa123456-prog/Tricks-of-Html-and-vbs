@@ -1,3 +1,3 @@
-# Tricks-of-Html-and-vbs
+# Tricks-of-Html-and-vbs(sometimes python)
 Html and VBS project for tricking your friends.
 IMPORTANT: IF THESE GAME BREAK OR DAMAGE YOUR LAPTOP; I DON'T HAVE ANY RESPONSIBILITY TO HAVE TO RISK; YOU HAVE TO ASSUME THE RESPONSIBILITY BY YOURSELF.
